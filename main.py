@@ -6,7 +6,7 @@ import os
 faces_path = "/Users/PycharmProjects/Uni/Face-recognition/known-faces"
 
 
-def get_face_encodings()
+def get_face_encodings():
     face_names = os.listdir(faces_path)
     face_encodings = []
 
