@@ -1,5 +1,4 @@
 import face_recognition as fr
-import numpy as np
 import cv2
 import os
 
@@ -29,7 +28,6 @@ while True:
     success, image = video.read()
 
     resized_image = cv2.resize(image, (int(image.shape[1]/scl), int(image.shape[0]/scl)))
-
     rgb_image = cv2.cvtColor(resized_image, cv2.COLOR_BGR2RGB)
 
     face_locations = fr.face_locations(rgb_image)
@@ -44,17 +42,14 @@ while True:
             top, right, bottom, left = face_location
 
             cv2.rectangle(image, (left*scl, top*scl), (right*scl, bottom*scl), (0, 255, 0), 2)
-
             font = cv2.FONT_HERSHEY_DUPLEX
             cv2.putText(image, name, (left*scl, bottom*scl + 30), font, 1, (0, 255, 0),2)
         else:
             top, right, bottom, left = face_location
-
-            cv2.rectangle(image, (left * scl, top * scl), (right * scl, bottom * scl), (0, 0, 255), 2)
+            cv2.rectangle(image, (left * scl, top * scl),(right * scl, bottom * scl), (0, 0, 255), 2)
 
             font = cv2.FONT_HERSHEY_DUPLEX
             cv2.putText(image, "unknown", (left * scl, bottom * scl + 30), font, 1, (0, 0, 255), 2)
-
     cv2.imshow("frame", image)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
